@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="armbandMaterial" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2C3E50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#34495E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3A4556;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A252F;stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#F5F5F5"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="110" ry="26" fill="#000" opacity="0.12"/>
+
+  <!-- ARM REPRESENTATION -->
+  <ellipse cx="200" cy="90" rx="75" ry="35" fill="#F5DEB3" stroke="#D2B48C" stroke-width="2.5" filter="url(#dropShadow)"/>
+  
+  <!-- Arm muscle definition -->
+  <ellipse cx="200" cy="85" rx="70" ry="30" fill="#F9E4B7" opacity="0.6"/>
+
+  <!-- ARMBAND BASE -->
+  <path d="M 70 120 Q 65 180 75 240 L 325 240 Q 335 180 325 120 Z" 
+        fill="url(#armbandMaterial)" stroke="#1A252F" stroke-width="2.5" filter="url(#dropShadow)"/>
+
+  <!-- Neoprene texture pattern (vertical lines) -->
+  <line x1="85" y1="125" x2="85" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="110" y1="125" x2="110" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="135" y1="125" x2="135" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="160" y1="125" x2="160" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="185" y1="125" x2="185" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="210" y1="125" x2="210" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="235" y1="125" x2="235" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="260" y1="125" x2="260" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="285" y1="125" x2="285" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+  <line x1="310" y1="125" x2="310" y2="235" stroke="#1A252F" stroke-width="1.2" opacity="0.25"/>
+
+  <!-- Horizontal texture lines -->
+  <line x1="70" y1="145" x2="330" y2="145" stroke="#1A252F" stroke-width="0.8" opacity="0.12"/>
+  <line x1="70" y1="170" x2="330" y2="170" stroke="#1A252F" stroke-width="0.8" opacity="0.12"/>
+  <line x1="70" y1="195" x2="330" y2="195" stroke="#1A252F" stroke-width="0.8" opacity="0.12"/>
+  <line x1="70" y1="220" x2="330" y2="220" stroke="#1A252F" stroke-width="0.8" opacity="0.12"/>
+
+  <!-- Phone viewing window -->
+  <rect x="115" y="150" width="170" height="140" fill="url(#screenGradient)" stroke="#1A252F" stroke-width="2.5" rx="8" filter="url(#dropShadow)"/>
+
+  <!-- Screen glass shine/reflection -->
+  <ellipse cx="135" cy="165" rx="30" ry="40" fill="#FFF" opacity="0.18"/>
+
+  <!-- Phone screen mockup (dark display) -->
+  <rect x="125" y="160" width="150" height="120" fill="#0F1419" stroke="none" rx="5"/>
+
+  <!-- Status bar -->
+  <rect x="125" y="160" width="150" height="12" fill="#1A202C" rx="2"/>
+  <text x="270" y="168" text-anchor="end" fill="#FFF" font-size="8" opacity="0.7">9:41</text>
+
+  <!-- App icons on screen (4 rows x 4 columns) -->
+  <rect x="132" y="178" width="14" height="14" fill="#EF4444" rx="3"/>
+  <rect x="151" y="178" width="14" height="14" fill="#10B981" rx="3"/>
+  <rect x="170" y="178" width="14" height="14" fill="#3B82F6" rx="3"/>
+  <rect x="189" y="178" width="14" height="14" fill="#F97316" rx="3"/>
+
+  <rect x="132" y="198" width="14" height="14" fill="#8B5CF6" rx="3"/>
+  <rect x="151" y="198" width="14" height="14" fill="#EC4899" rx="3"/>
+  <rect x="170" y="198" width="14" height="14" fill="#06B6D4" rx="3"/>
+  <rect x="189" y="198" width="14" height="14" fill="#F59E0B" rx="3"/>
+
+  <!-- Scrollable content indicator -->
+  <rect x="132" y="218" width="71" height="8" fill="#6B7280" rx="2" opacity="0.6"/>
+
+  <!-- Strap adjustment buckle (left) -->
+  <g filter="url(#dropShadow)">
+    <rect x="60" y="155" width="18" height="35" fill="#8B7355" stroke="#5D4A37" stroke-width="1.5" rx="3"/>
+    <circle cx="69" cy="172" r="3" fill="#5D4A37" opacity="0.8"/>
+    <circle cx="69" cy="187" r="3" fill="#5D4A37" opacity="0.8"/>
+  </g>
+
+  <!-- Anti-slip pads (top) -->
+  <rect x="75" y="125" width="250" height="4" fill="#1A252F" opacity="0.5" rx="2"/>
+  
+  <!-- Anti-slip pads (bottom) -->
+  <rect x="75" y="231" width="250" height="4" fill="#1A252F" opacity="0.5" rx="2"/>
+
+  <!-- Brightness indicator dots -->
+  <circle cx="340" cy="170" r="3" fill="#F59E0B" opacity="0.6"/>
+  <circle cx="340" cy="190" r="3" fill="#6B7280" opacity="0.4"/>
+  <circle cx="340" cy="210" r="3" fill="#6B7280" opacity="0.4"/>
+
+  <!-- Brand/Size label -->
+  <text x="200" y="320" text-anchor="middle" fill="#2C3E50" font-size="16" font-weight="bold" opacity="0.8">ARMBAND SPORT</text>
+  
+  <!-- Size info -->
+  <text x="200" y="350" text-anchor="middle" fill="#5D6C7B" font-size="12">Universal Fit • 4.5" - 7" Phones</text>
+  
+  <!-- Features -->
+  <text x="200" y="375" text-anchor="middle" fill="#7F8C8D" font-size="11">Anti-Sweat • Adjustable • Neoprene</text>
+  <text x="200" y="395" text-anchor="middle" fill="#7F8C8D" font-size="11">Easy Access Touchscreen</text>
+</svg>

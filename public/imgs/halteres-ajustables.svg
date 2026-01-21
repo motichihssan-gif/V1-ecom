@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="redPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#DC2626;stop-opacity:1" />
+      <stop offset="65%" style="stop-color:#B91C1C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7F1D1D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="chromeHandle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3F4F6;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#E5E7EB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#6B7280;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4B5563;stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#F5F5F5"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="130" ry="28" fill="#000" opacity="0.13"/>
+
+  <!-- LEFT DUMBBELL PLATE -->
+  <!-- Outer edge shadow -->
+  <ellipse cx="70" cy="220" rx="48" ry="95" fill="#000" opacity="0.15"/>
+  
+  <!-- Plate with gradient -->
+  <ellipse cx="70" cy="220" rx="45" ry="92" fill="url(#redPlate)" stroke="#5A1616" stroke-width="2.5" filter="url(#dropShadow)"/>
+  
+  <!-- Plate shine/highlight -->
+  <ellipse cx="50" cy="160" rx="18" ry="50" fill="#FFF" opacity="0.25"/>
+  <ellipse cx="85" cy="270" rx="12" ry="25" fill="#000" opacity="0.08"/>
+  
+  <!-- Weight text on plate -->
+  <text x="70" y="230" text-anchor="middle" fill="#FFF" font-size="48" font-weight="bold" opacity="0.9">10</text>
+  <text x="70" y="260" text-anchor="middle" fill="#FFF" font-size="12" opacity="0.6">KG</text>
+
+  <!-- LEFT HANDLE -->
+  <!-- Grip section -->
+  <rect x="125" y="195" width="40" height="50" fill="url(#chromeHandle)" stroke="#374151" stroke-width="2.5" rx="8" filter="url(#dropShadow)"/>
+  
+  <!-- Handle grip pattern -->
+  <line x1="132" y1="200" x2="155" y2="200" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="132" y1="215" x2="155" y2="215" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="132" y1="230" x2="155" y2="230" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="132" y1="245" x2="155" y2="245" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+
+  <!-- CENTER CONNECTOR -->
+  <rect x="170" y="205" width="60" height="30" fill="url(#chromeHandle)" stroke="#374151" stroke-width="2.5" rx="5" filter="url(#dropShadow)"/>
+  
+  <!-- Center bar grip detail -->
+  <line x1="175" y1="205" x2="175" y2="235" stroke="#000" stroke-width="1" opacity="0.12"/>
+  <line x1="195" y1="205" x2="195" y2="235" stroke="#000" stroke-width="1" opacity="0.12"/>
+  <line x1="215" y1="205" x2="215" y2="235" stroke="#000" stroke-width="1" opacity="0.12"/>
+  
+  <!-- Knurled grip lines on center -->
+  <line x1="175" y1="210" x2="225" y2="210" stroke="#000" stroke-width="0.5" opacity="0.08"/>
+  <line x1="175" y1="220" x2="225" y2="220" stroke="#000" stroke-width="0.5" opacity="0.08"/>
+  <line x1="175" y1="230" x2="225" y2="230" stroke="#000" stroke-width="0.5" opacity="0.08"/>
+
+  <!-- RIGHT HANDLE -->
+  <!-- Grip section -->
+  <rect x="235" y="195" width="40" height="50" fill="url(#chromeHandle)" stroke="#374151" stroke-width="2.5" rx="8" filter="url(#dropShadow)"/>
+  
+  <!-- Handle grip pattern -->
+  <line x1="242" y1="200" x2="265" y2="200" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="242" y1="215" x2="265" y2="215" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="242" y1="230" x2="265" y2="230" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+  <line x1="242" y1="245" x2="265" y2="245" stroke="#000" stroke-width="0.8" opacity="0.15"/>
+
+  <!-- RIGHT DUMBBELL PLATE -->
+  <!-- Outer edge shadow -->
+  <ellipse cx="330" cy="220" rx="48" ry="95" fill="#000" opacity="0.15"/>
+  
+  <!-- Plate with gradient -->
+  <ellipse cx="330" cy="220" rx="45" ry="92" fill="url(#redPlate)" stroke="#5A1616" stroke-width="2.5" filter="url(#dropShadow)"/>
+  
+  <!-- Plate shine/highlight -->
+  <ellipse cx="315" cy="160" rx="18" ry="50" fill="#FFF" opacity="0.25"/>
+  <ellipse cx="350" cy="270" rx="12" ry="25" fill="#000" opacity="0.08"/>
+  
+  <!-- Weight text on plate -->
+  <text x="330" y="230" text-anchor="middle" fill="#FFF" font-size="48" font-weight="bold" opacity="0.9">10</text>
+  <text x="330" y="260" text-anchor="middle" fill="#FFF" font-size="12" opacity="0.6">KG</text>
+
+  <!-- Weight indicator stripe (left) -->
+  <rect x="50" y="110" width="40" height="5" fill="#FFD700" stroke="#DAA520" stroke-width="1" rx="2.5" opacity="0.85"/>
+  
+  <!-- Weight indicator stripe (right) -->
+  <rect x="310" y="110" width="40" height="5" fill="#FFD700" stroke="#DAA520" stroke-width="1" rx="2.5" opacity="0.85"/>
+</svg>

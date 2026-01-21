@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <radialGradient id="bezelGradient" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4B5563;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A202C;stop-opacity:1" />
+    </linearGradient>
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#F5F5F5"/>
+  
+  <!-- Shadow -->
+  <ellipse cx="200" cy="470" rx="100" ry="25" fill="#000" opacity="0.12"/>
+
+  <!-- Band top left -->
+  <path d="M 140 30 L 155 10 L 180 8 L 185 35 L 160 45 Z" fill="#1F2937" stroke="#111827" stroke-width="1.5"/>
+  
+  <!-- Band top right -->
+  <path d="M 260 30 L 245 10 L 220 8 L 215 35 L 240 45 Z" fill="#1F2937" stroke="#111827" stroke-width="1.5"/>
+
+  <!-- Watch body bezel outer -->
+  <circle cx="200" cy="200" r="90" fill="url(#bezelGradient)" stroke="#8B6914" stroke-width="3" filter="url(#dropShadow)"/>
+
+  <!-- Bezel inner ring (glossy) -->
+  <circle cx="200" cy="200" r="85" fill="none" stroke="#FFE5B4" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Watch face/screen -->
+  <circle cx="200" cy="200" r="78" fill="url(#screenGradient)" stroke="#0F172A" stroke-width="2"/>
+
+  <!-- Screen glass reflection (top) -->
+  <ellipse cx="170" cy="150" rx="30" ry="35" fill="#FFF" opacity="0.22"/>
+  
+  <!-- Screen glass reflection (bottom) -->
+  <ellipse cx="210" cy="260" rx="25" ry="20" fill="#FFF" opacity="0.08"/>
+
+  <!-- GPS Signal indicator -->
+  <g>
+    <circle cx="200" cy="130" r="3" fill="#10B981" filter="url(#dropShadow)"/>
+    <path d="M 200 130 L 205 138 M 200 130 L 195 138 M 200 130 L 200 140" 
+          stroke="#10B981" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <text x="215" y="135" fill="#10B981" font-size="10" font-weight="bold">GPS</text>
+  </g>
+
+  <!-- Time display -->
+  <text x="200" y="210" text-anchor="middle" fill="#00FF41" font-size="42" font-family="monospace" font-weight="bold">12:45</text>
+
+  <!-- Heart rate indicator -->
+  <g>
+    <!-- Heart icon -->
+    <path d="M 180 235 Q 175 225 165 225 Q 160 225 160 235 Q 160 245 180 260 Q 200 245 200 235 Q 200 225 190 225 Q 185 225 180 235" 
+          fill="#EF4444" opacity="0.9"/>
+    <text x="220" y="252" fill="#EF4444" font-size="12" font-weight="bold">88 BPM</text>
+  </g>
+
+  <!-- Calories indicator -->
+  <text x="200" y="285" text-anchor="middle" fill="#3B82F6" font-size="11">248 CAL</text>
+
+  <!-- Side buttons -->
+  <rect x="295" y="180" width="7" height="16" fill="#8B6914" stroke="#5D4A0E" stroke-width="1" rx="2" filter="url(#dropShadow)"/>
+  <rect x="295" y="210" width="7" height="16" fill="#8B6914" stroke="#5D4A0E" stroke-width="1" rx="2" filter="url(#dropShadow)"/>
+
+  <!-- Watch band bottom left -->
+  <path d="M 155 365 L 140 385 L 130 470 L 160 480 L 175 365 Z" 
+        fill="#1F2937" stroke="#111827" stroke-width="1.5" filter="url(#dropShadow)"/>
+  
+  <!-- Band texture lines left -->
+  <line x1="140" y1="380" x2="155" y2="370" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+  <line x1="140" y1="420" x2="155" y2="410" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+  <line x1="140" y1="460" x2="155" y2="450" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+
+  <!-- Watch band bottom right -->
+  <path d="M 245 365 L 260 385 L 270 470 L 240 480 L 225 365 Z" 
+        fill="#1F2937" stroke="#111827" stroke-width="1.5" filter="url(#dropShadow)"/>
+  
+  <!-- Band texture lines right -->
+  <line x1="260" y1="380" x2="245" y2="370" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+  <line x1="260" y1="420" x2="245" y2="410" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+  <line x1="260" y1="460" x2="245" y2="450" stroke="#4B5563" stroke-width="1" opacity="0.3"/>
+
+  <!-- Bezel engravings -->
+  <text x="200" y="95" text-anchor="middle" fill="#8B6914" font-size="9" opacity="0.5">SPORTS</text>
+  <text x="200" y="325" text-anchor="middle" fill="#8B6914" font-size="9" opacity="0.5">RUNNING PRO</text>
+</svg>

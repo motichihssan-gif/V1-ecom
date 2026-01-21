@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bagBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E40AF;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#1E40AF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bagShade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0.4" />
+    </linearGradient>
+    <filter id="dropShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="0" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="innerShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="offsetcolor"/>
+      <feComposite in="offsetcolor" in2="offsetblur" operator="in" result="offsetblur"/>
+      <feComposite in="offsetblur" in2="SourceAlpha" operator="in" result="offsetblur"/>
+      <feMerge>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="offsetblur"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#F5F5F5"/>
+  
+  <!-- Shadow base -->
+  <ellipse cx="200" cy="470" rx="110" ry="25" fill="#000" opacity="0.12"/>
+
+  <!-- Main bag body -->
+  <path d="M 110 80 L 130 30 L 270 30 L 290 80 L 290 340 Q 290 420 200 440 L 200 440 Q 110 420 110 340 Z" 
+        fill="url(#bagBody)" stroke="#0F1728" stroke-width="2.5" filter="url(#dropShadow)"/>
+
+  <!-- Bag shading (right side) -->
+  <path d="M 280 100 L 290 340 Q 290 420 200 440 L 210 440 Q 300 420 300 340 L 290 100 Z" 
+        fill="url(#bagShade)"/>
+
+  <!-- Fabric texture pattern -->
+  <circle cx="150" cy="150" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="160" cy="170" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="170" cy="140" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="180" cy="160" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="200" cy="150" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="220" cy="160" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="240" cy="140" r="0.5" fill="#000" opacity="0.08"/>
+  <circle cx="260" cy="170" r="0.5" fill="#000" opacity="0.08"/>
+
+  <!-- Main zipper area -->
+  <rect x="180" y="70" width="40" height="16" fill="#D97706" stroke="#B45309" stroke-width="1.5" rx="3" filter="url(#innerShadow)"/>
+  <rect x="185" y="74" width="30" height="8" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="200" cy="78" r="2.5" fill="#B45309"/>
+
+  <!-- Front pockets (left) -->
+  <rect x="130" y="170" width="55" height="75" fill="#0D2960" stroke="#0F1728" stroke-width="2" rx="4" filter="url(#innerShadow)"/>
+  <rect x="135" y="175" width="45" height="65" fill="#1E40AF" opacity="0.7"/>
+  <!-- Pocket zipper line -->
+  <line x1="157.5" y1="170" x2="157.5" y2="245" stroke="#D97706" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Front pockets (right) -->
+  <rect x="215" y="170" width="55" height="75" fill="#0D2960" stroke="#0F1728" stroke-width="2" rx="4" filter="url(#innerShadow)"/>
+  <rect x="220" y="175" width="45" height="65" fill="#1E40AF" opacity="0.7"/>
+  <!-- Pocket zipper line -->
+  <line x1="242.5" y1="170" x2="242.5" y2="245" stroke="#D97706" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Side pocket -->
+  <rect x="295" y="100" width="35" height="100" fill="#0D2960" stroke="#0F1728" stroke-width="2" rx="3" opacity="0.85" filter="url(#innerShadow)"/>
+  <line x1="312.5" y1="100" x2="312.5" y2="200" stroke="#D97706" stroke-width="1" opacity="0.5"/>
+
+  <!-- Handles (left) -->
+  <path d="M 140 50 Q 140 15 200 10 Q 260 15 260 50" 
+        stroke="#0F1728" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#dropShadow)"/>
+  <path d="M 142 50 Q 142 18 200 13 Q 258 18 258 50" 
+        stroke="#1E40AF" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 144 50 Q 144 22 200 18 Q 256 22 256 50" 
+        stroke="#3B82F6" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Reflective safety strip -->
+  <rect x="130" y="280" width="140" height="10" fill="#FFD700" stroke="#DAA520" stroke-width="1.5" rx="5" opacity="0.85" filter="url(#dropShadow)"/>
+  <rect x="135" y="283" width="130" height="4" fill="#FFF" opacity="0.35"/>
+
+  <!-- Main highlight/shine -->
+  <ellipse cx="150" cy="140" rx="40" ry="80" fill="#FFF" opacity="0.18"/>
+  <ellipse cx="140" cy="280" rx="20" ry="30" fill="#FFF" opacity="0.12"/>
+
+  <!-- Reinforced corners (darker areas) -->
+  <circle cx="115" cy="340" r="12" fill="#0F1728" opacity="0.3"/>
+  <circle cx="285" cy="340" r="12" fill="#0F1728" opacity="0.3"/>
+
+  <!-- Bottom details -->
+  <line x1="140" y1="395" x2="260" y2="395" stroke="#0F1728" stroke-width="1" opacity="0.2"/>
+</svg>
