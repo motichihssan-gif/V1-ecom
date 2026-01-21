@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
      public function getProductsByCategorie($cat) {
-     $products = Product::where('categorie',$cat)->get();
+     $products = Product::where('categorie',$cat)->paginate(6);
      return view('Produits', ['products' =>$products,'categorie'=>$cat]);
 
     }

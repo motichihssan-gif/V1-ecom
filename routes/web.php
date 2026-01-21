@@ -14,7 +14,7 @@ Route::get('/contact', function () {
 });
 
 Route::get('/products', function () {
-    $products = Product::all();
+    $products = Product::paginate(6);
     
     return view('Produits', ['products' => $products, 'categorie' => 'Tous']);
 });

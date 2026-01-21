@@ -40,6 +40,7 @@
         font-weight: 600;
         display: inline-block;
     }
+
 </style>
 
 <div class="products-table">
@@ -70,7 +71,9 @@
     @endforeach
 </div>
 
-<div style="margin-top: 20px;">
-    
+<!-- Pagination -->
+<div style="margin-top: 30px; display: flex; justify-content: center;">
+    {{ $products->links('vendor.pagination.custom') }}
 </div>
+
 @endsection
