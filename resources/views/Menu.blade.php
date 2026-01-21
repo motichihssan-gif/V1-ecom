@@ -79,7 +79,7 @@
     </div>
     <nav>
         <a href="/" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
-        <a href="/produits" class="nav-link"><i class="fas fa-store"></i> Produits</a>
+        <a href="/products" class="nav-link"><i class="fas fa-store"></i> Produits</a>
         <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
         <a href="/contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
