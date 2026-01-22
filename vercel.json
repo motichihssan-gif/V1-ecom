@@ -1,6 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "outputDirectory": "public",
+  "functions": {
+    "api/index.php": {
+      "runtime": "php:8.3"
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
