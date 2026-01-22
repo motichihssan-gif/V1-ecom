@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "builds": [
     {
-      "src": "public/index.php",
+      "src": "api/lambda.php",
       "use": "vercel-php@0.7.4"
     },
     {
@@ -12,8 +12,12 @@
   ],
   "routes": [
     {
-      "src": "^/(.*)$",
-      "dest": "/public/index.php"
+      "src": "^/(?!.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$)(.*)$",
+      "dest": "/api/lambda.php"
+    },
+    {
+      "src": "^/(.*)",
+      "dest": "/public/$1"
     }
   ]
 }
