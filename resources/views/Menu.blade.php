@@ -82,5 +82,6 @@
         <a href="/products" class="nav-link"><i class="fas fa-store"></i> Produits</a>
         <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
         <a href="/contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="{{ route('products.create') }}" class="nav-link"><i class="fas fa-plus-circle"></i> Ajouter</a>
     </nav>
 </header>

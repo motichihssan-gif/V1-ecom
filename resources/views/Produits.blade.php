@@ -13,8 +13,8 @@
 
     .table-header, .table-row {
         display: grid;
-        /* 5 colonnes bien définies */
-        grid-template-columns: 100px 1.5fr 3fr 1fr 1.2fr; 
+        /* 6 colonnes bien définies */
+        grid-template-columns: 100px 1.5fr 2fr 1fr 1fr 1.5fr; 
         gap: 20px;
         align-items: center;
         padding: 15px 20px;
@@ -50,12 +50,13 @@
         <div>DESCRIPTION</div>
         <div>PRIX</div>
         <div>CATÉGORIE</div>
+        <div>ACTIONS</div>
     </div>
 
     @foreach ($products as $item)
         <div class="table-row">
             <div>
-                <img src="{{ asset('imgs/' . $item->image) }}" class="product-image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                <img src="{{ $item->image }}" class="product-image" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
             </div>
 
             <div style="font-weight: 600;">{{ $item->titre }}</div>
@@ -63,9 +64,17 @@
             <div style="font-size: 12px; color: #666;">{{ Str::limit($item->contenu, 80) }}</div>
 
             <div class="price" style="font-weight: bold;">{{ $item->prix }} DH</div>
-
             <div>
                 <span class="categorie-badge">{{ $item->categorie }}</span>
+            </div>
+
+            <div>
+                <a href="{{ route('products.edit', $item->id) }}" class="btn btn-primary btn-sm">Éditer</a>
+                <form action="{{ route('products.destroy', $item->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button>
+                </form>
             </div>
         </div>
     @endforeach
@@ -73,7 +82,7 @@
 
 <!-- Pagination -->
 <div style="margin-top: 30px; display: flex; justify-content: center;">
-    {{ $products->links('vendor.pagination.custom') }}
+    {{ $products->links('pagination::bootstrap-5') }}
 </div>
 
 @endsection

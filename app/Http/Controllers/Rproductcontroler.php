@@ -1,0 +1,129 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Product;
+use Cloudinary\Cloudinary;
+
+class Rproductcontroler extends Controller
+{
+    
+    public function index()
+    {
+         $products = Product::paginate(5);
+        return view('Produits',['products'=> $products, 'categorie' => 'all']);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('creerproduit');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        \Log::info('Store method called');
+        
+        $request->validate([
+            'titre' => 'required|string|max:255',
+            'contenu' => 'required|string',
+            'prix' => 'required|numeric',
+            'categorie' => 'required|string|max:100',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        
+        try {
+            $titre = $request->input('titre');
+            $contenu = $request->input('contenu');
+            $prix = $request->input('prix');
+            $categorie = $request->input('categorie');
+
+            $uploadedFileUrl = $this->uploadToCloudinary($request->file('image'));
+
+            Product::insert([
+                'titre' => $titre,
+                'contenu' => $contenu,
+                'prix' => $prix,
+                'categorie' => $categorie,
+                'image' => $uploadedFileUrl,
+                'solde' => 0,
+            ]);
+
+            return redirect()->route('products.index')->with('success', 'Produit ajouté avec succès!');
+        } catch (\Exception $e) {
+            \Log::error('Cloudinary upload error: ' . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Erreur lors du téléchargement: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $product = Product::findOrFail($id);
+        return view('editproduit', ['product' => $product]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $product = Product::findOrFail($id);    
+        $request->validate([
+            'titre' => 'required|string|max:255',
+            'contenu' => 'required|string',
+            'prix' => 'required|numeric',
+            'categorie' => 'required|string|max:100',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        
+        try {
+            $product->titre = $request->input('titre');
+            $product->contenu = $request->input('contenu');
+            $product->prix = $request->input('prix');
+            $product->categorie = $request->input('categorie');
+            
+            if ($request->hasFile('image')) {
+                $uploadedFileUrl = $this->uploadToCloudinary($request->file('image'));
+                $product->image = $uploadedFileUrl;
+            }
+            $product->save();
+            return redirect()->route('products.index');
+        } catch (\Exception $e) {
+            \Log::error('Cloudinary upload error: ' . $e->getMessage());
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Erreur lors du téléchargement: ' . $e->getMessage());
+        }
+    }
+
+    
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+        return redirect()->route('products.index');
+    }
+}
