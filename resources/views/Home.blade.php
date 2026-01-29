@@ -12,8 +12,8 @@
                     <p class="hero-sub">Performance &amp; Style pour Hommes et Femmes – Conçus pour votre quotidien actif</p>
 
                     <div class="mt-4 d-flex gap-3">
-                        <a href="/produits/Men" class="btn btn-primary btn-orange btn-lg me-2">Découvrir la collection</a>
-                        <a href="/a-propos" class="btn btn-outline-light btn-lg">Notre histoire</a>
+                        <a href="{{ route('produits.index') }}" class="btn btn-primary btn-orange btn-lg me-2">Découvrir la collection</a>
+                        <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg">Notre histoire</a>
                     </div>
                 </div>
 

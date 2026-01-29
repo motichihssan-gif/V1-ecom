@@ -8,7 +8,31 @@ use Cloudinary\Cloudinary;
 
 class Rproductcontroler extends Controller
 {
+<<<<<<< HEAD
     
+=======
+    private function uploadToCloudinary($file)
+    {
+        try {
+            $cloudinary = new Cloudinary([
+                'cloud' => [
+                    'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                    'api_key' => env('CLOUDINARY_API_KEY'),
+                    'api_secret' => env('CLOUDINARY_API_SECRET'),
+                ]
+            ]);
+
+            return $cloudinary->uploadApi()->upload($file->getRealPath(), [
+                'folder' => 'products',
+            ])['secure_url'];
+        } catch (\Exception $e) {
+            throw new \Exception('Erreur lors du téléchargement de l\'image: ' . $e->getMessage());
+        }
+    }
+    /**
+     * Display a listing of the resource.
+     */
+>>>>>>> e0ac472 (push)
     public function index()
     {
          $products = Product::paginate(5);
@@ -29,6 +53,10 @@ class Rproductcontroler extends Controller
     public function store(Request $request)
     {
         \Log::info('Store method called');
+<<<<<<< HEAD
+=======
+       
+>>>>>>> e0ac472 (push)
         
         $request->validate([
             'titre' => 'required|string|max:255',
@@ -54,8 +82,12 @@ class Rproductcontroler extends Controller
                 'image' => $uploadedFileUrl,
                 'solde' => 0,
             ]);
+<<<<<<< HEAD
 
             return redirect()->route('products.index')->with('success', 'Produit ajouté avec succès!');
+=======
+            return redirect()->route('produits.index')->with('success', 'Produit ajouté avec succès!');
+>>>>>>> e0ac472 (push)
         } catch (\Exception $e) {
             \Log::error('Cloudinary upload error: ' . $e->getMessage());
             return redirect()->back()
@@ -69,8 +101,14 @@ class Rproductcontroler extends Controller
      */
     public function show(string $id)
     {
+<<<<<<< HEAD
         //
     }
+=======
+        // $product = Product::findOrFail($id);
+        // return view('showproduit', compact('product'));
+    } 
+>>>>>>> e0ac472 (push)
 
     /**
      * Show the form for editing the specified resource.
@@ -106,7 +144,11 @@ class Rproductcontroler extends Controller
                 $product->image = $uploadedFileUrl;
             }
             $product->save();
+<<<<<<< HEAD
             return redirect()->route('products.index');
+=======
+            return redirect()->route('produits.index');
+>>>>>>> e0ac472 (push)
         } catch (\Exception $e) {
             \Log::error('Cloudinary upload error: ' . $e->getMessage());
             return redirect()->back()
@@ -124,6 +166,13 @@ class Rproductcontroler extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
+<<<<<<< HEAD
         return redirect()->route('products.index');
     }
 }
+=======
+        return redirect()->route('produits.index');
+    }
+}
+
+>>>>>>> e0ac472 (push)

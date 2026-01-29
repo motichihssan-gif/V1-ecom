@@ -20,10 +20,17 @@
                                 {{ session('error') }}
                             </div>
                         @endif
+<<<<<<< HEAD
                         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label fw-semibold">Product Name</label>
+=======
+                        <form action="{{ route('produits.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-semibold">nom du produit</label>
+>>>>>>> e0ac472 (push)
                                 <input type="text" name="titre" id="name" class="form-control @error('titre') is-invalid @enderror" value="{{ old('titre') }}">
                                 @error('titre')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -37,23 +44,37 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+<<<<<<< HEAD
                                 <label for="price" class="form-label fw-semibold">Price</label>
+=======
+                                <label for="price" class="form-label fw-semibold">Prix</label>
+>>>>>>> e0ac472 (push)
                                 <input type="number" step="0.01" name="prix" id="price" class="form-control @error('prix') is-invalid @enderror" value="{{ old('prix') }}">
                                 @error('prix')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-3">
+<<<<<<< HEAD
                                 <label for="image" class="form-label fw-semibold">Product Image</label>
+=======
+                                <label for="image" class="form-label fw-semibold">Image</label>
+>>>>>>> e0ac472 (push)
                                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
                                 @error('image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="mb-4">
+<<<<<<< HEAD
                                 <label for="category" class="form-label fw-semibold">Category</label>
                                 <select name="categorie" id="category" class="form-select @error('categorie') is-invalid @enderror">
                                     <option value="" disabled selected>Select a category</option>
+=======
+                                <label for="category" class="form-label fw-semibold">Categorie</label>
+                                <select name="categorie" id="category" class="form-select @error('categorie') is-invalid @enderror">
+                                    <option value="" disabled selected>choisir une categorie</option>
+>>>>>>> e0ac472 (push)
                                     <option value="sac de sport" {{ old('categorie') == 'sac de sport' ? 'selected' : '' }}>Sac de Sport</option>
                                     <option value="fitness" {{ old('categorie') == 'fitness' ? 'selected' : '' }}>fitness</option>
                                     <option value="running" {{ old('categorie') == 'running' ? 'selected' : '' }}>running</option>

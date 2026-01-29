@@ -3,6 +3,10 @@
 @section('title', 'Produits - EcomSport')
 
 @section('content')
+@php
+    $isAdmin = Auth::user() && Auth::user()->role === \App\Models\User::ADMIN_ROLE;
+@endphp
+
 <style>
     .products-table {
         margin-top: 20px;
@@ -13,8 +17,13 @@
 
     .table-header, .table-row {
         display: grid;
+<<<<<<< HEAD
         /* 6 colonnes bien définies */
         grid-template-columns: 100px 1.5fr 2fr 1fr 1fr 1.5fr; 
+=======
+        /* Toggle between 5 and 6 columns based on admin role */
+        grid-template-columns: {{ $isAdmin ? '100px 1.5fr 2fr 1fr 1fr 1.5fr' : '100px 1.5fr 2fr 1fr 1fr' }}; 
+>>>>>>> e0ac472 (push)
         gap: 20px;
         align-items: center;
         padding: 15px 20px;
@@ -50,7 +59,13 @@
         <div>DESCRIPTION</div>
         <div>PRIX</div>
         <div>CATÉGORIE</div>
+<<<<<<< HEAD
         <div>ACTIONS</div>
+=======
+        @if($isAdmin)
+            <div>ACTIONS</div>
+        @endif
+>>>>>>> e0ac472 (push)
     </div>
 
     @foreach ($products as $item)
@@ -68,6 +83,7 @@
                 <span class="categorie-badge">{{ $item->categorie }}</span>
             </div>
 
+<<<<<<< HEAD
             <div>
                 <a href="{{ route('products.edit', $item->id) }}" class="btn btn-primary btn-sm">Éditer</a>
                 <form action="{{ route('products.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -76,6 +92,18 @@
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button>
                 </form>
             </div>
+=======
+            @if($isAdmin)
+                <div>
+                    <a href="{{ route('produits.edit', $item->id) }}" class="btn btn-primary btn-sm">Modifier</a>
+                    <form action="{{ route('produits.destroy', $item->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button>
+                    </form>
+                </div>
+            @endif
+>>>>>>> e0ac472 (push)
         </div>
     @endforeach
 </div>
