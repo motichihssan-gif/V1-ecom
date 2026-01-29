@@ -1,15 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProductController;
-<<<<<<< HEAD
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Rproductcontroler;
-
-=======
-use App\Http\Controllers\Rproductcontroler;
-use Illuminate\Support\Facades\Route;
->>>>>>> e0ac472 (push)
 
 Route::get('/', function () {
     return view('Home');
@@ -36,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/produits/{id}', [Rproductcontroler::class, 'destroy'])->name('produits.destroy');
 });
 
-<<<<<<< HEAD
+
 // Route::get('/products', function () {
 //     $products = Product::paginate(6);
     
@@ -50,15 +44,9 @@ Route::get('/produits/{cat}', [ProductController::class,
 'getProductsByCategorie']);
 Route::resource('products',Rproductcontroler::class);
 
-
-
-
 Route::get('/session-test', function () {
     session(['ok' => 'yes']);
     return session('ok');
 });
 
-?>
-=======
 require __DIR__.'/auth.php';
->>>>>>> e0ac472 (push)

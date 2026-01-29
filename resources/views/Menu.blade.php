@@ -117,17 +117,10 @@
         <p class="tagline">Performance & Élégance</p>
     </div>
     <nav>
-<<<<<<< HEAD
-        <a href="/" class="nav-link"><i class="fas fa-home"></i> Accueil</a>
-        <a href="/products" class="nav-link"><i class="fas fa-store"></i> Produits</a>
-        <a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> À propos</a>
-        <a href="/contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-        <a href="{{ route('products.create') }}" class="nav-link"><i class="fas fa-plus-circle"></i> Ajouter</a>
-=======
-        <a href="{{ url('/') }}" class="nav-link"><i class="fas fa-home"></i> <span>Accueil</span></a>
+        <a href="/" class="nav-link"><i class="fas fa-home"></i> <span>Accueil</span></a>
+        <a href="{{ route('produits.index') }}" class="nav-link"><i class="fas fa-store"></i> <span>Produits</span></a>
         <a href="{{ route('about') }}" class="nav-link"><i class="fas fa-info-circle"></i> <span>À propos</span></a>
         <a href="{{ route('contact') }}" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a>
-        <a href="{{ route('produits.index') }}" class="nav-link"><i class="fas fa-store"></i> <span>Produits</span></a>
 
         @guest
             <a href="{{ route('login') }}" class="nav-link"><i class="fas fa-sign-in-alt"></i> <span>Se connecter</span></a>
@@ -151,6 +144,5 @@
                 <i class="fas fa-sign-out-alt"></i> <span>Déconnexion</span>
             </a>
         @endauth
->>>>>>> e0ac472 (push)
     </nav>
 </header>
