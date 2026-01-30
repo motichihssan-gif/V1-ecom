@@ -327,7 +327,7 @@
             </div>
             <div class="contact-details">
                 <h3>Email</h3>
-                <p>ihsane@ecomsport.com</p>
+                <p>motichihssan@gmail.com</p>
                 <p style="color: #94A3B8; font-size: 14px;">Réponse sous 24h</p>
             </div>
         </div>
@@ -376,7 +376,27 @@
     
     <div class="contact-form">
         <h2>Envoyez-nous un message</h2>
-        <form action="#" method="POST">
+        
+        @if(session()->has('success'))
+            <script>alert('✅ ' + '{{ session('success') }}');</script>
+            <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb; font-weight: bold;">
+                ✅ {{ session('success') }}
+            </div>
+        @endif
+        
+        @if($errors->any())
+            <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+                <strong>❌ Erreurs:</strong>
+                <ul style="margin: 5px 0 0 20px; padding-left: 0;">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
+        <form action="{{ route('contact.store') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="name">Nom complet <span>*</span></label>
                 <input type="text" id="name" name="name" class="form-control" required placeholder="Votre nom et prénom">
@@ -409,7 +429,7 @@
                 <textarea id="message" name="message" class="form-control" required placeholder="Décrivez-nous votre demande..."></textarea>
             </div>
             
-            
+            <button type="submit" class="submit-btn">Envoyer votre message</button>
         </form>
     </div>
 </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Cloudinary\Cloudinary;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class Rproductcontroler extends Controller
 {
@@ -145,5 +147,62 @@ class Rproductcontroler extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('produits.index');
+    }
+
+    /**
+     * Display email form
+     */
+    public function email()
+    {
+        return view('email');
+    }
+
+    /**
+     * Send email
+     */
+    public function sendEmail(Request $request)
+    {
+        $data = [
+            'recipient_email' => $request->input('recipient_email'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+        ];
+
+        // Envoyer l'e-mail en utilisant la classe Mailable
+        Mail::to($data['recipient_email'])->send(new TestMail($data));
+
+        return back()->with('success', 'Email sent successfully!');
+    }
+
+    /**
+     * Handle contact form submission
+     */
+    public function contact(Request $request)
+    {
+        \Log::info('Contact form received', $request->all());
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|min:10',
+        ]);
+
+        \Log::info('Contact form validated', $validated);
+
+        try {
+            \Log::info('Sending contact email');
+            
+            // Envoyer l'email au support
+            Mail::to('motichihssan@gmail.com')->send(new TestMail($validated));
+            
+            \Log::info('Contact email sent successfully');
+
+            return redirect()->route('contact')->with('success', 'Votre message a été envoyé avec succès! Nous vous répondrons bientôt.');
+        } catch (\Exception $e) {
+            \Log::error('Contact email error: ' . $e->getMessage());
+            return back()->withErrors('Erreur: ' . $e->getMessage());
+        }
     }
 }

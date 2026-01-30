@@ -9,9 +9,31 @@ Route::get('/', function () {
     return view('Home');
 });
 
+Route::get('/email', [Rproductcontroler::class, 'email']);
+Route::post('/send/email', [Rproductcontroler::class, 'sendEmail'])->name('send.email');
+
 Route::get('/produits', [Rproductcontroler::class, 'index'])->name('produits.index');
 Route::view('/about', 'About')->name('about');
-Route::view('/contact', 'Contact')->name('contact');
+Route::get('/contact', function () {
+    return view('Contact');
+})->name('contact');
+Route::post('/contact', [Rproductcontroler::class, 'contact'])->name('contact.store');
+
+// Test email route
+Route::get('/test-email', function () {
+    try {
+        \Mail::to('motichihssan@gmail.com')->send(new \App\Mail\TestMail([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'phone' => '1234567890',
+            'subject' => 'Test Email',
+            'message' => 'This is a test email'
+        ]));
+        return 'Email sent successfully!';
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
