@@ -189,7 +189,7 @@
 
                 <div class="col-md-5 text-center">
                     <div class="hero-image-box mx-auto shadow-sm">
-                        <img src="/imgs/hero.jpg" alt="Sport" class="img-fluid rounded-3" style="max-height:320px; object-fit:cover;">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Sport" class="img-fluid rounded-3" style="max-height:320px; object-fit:cover;">
                     </div>
                 </div>
             </div>
