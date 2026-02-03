@@ -189,7 +189,7 @@
 
                 <div class="col-md-5 text-center">
                     <div class="hero-image-box mx-auto shadow-sm">
-                        <img src="{{ asset('imgs/hero.jpg') }}" alt="Sport" class="img-fluid rounded-3" style="max-height:320px; object-fit:cover;">
+                        <img src="/imgs/hero.jpg" alt="Sport" class="img-fluid rounded-3" style="max-height:320px; object-fit:cover;">
                     </div>
                 </div>
             </div>
