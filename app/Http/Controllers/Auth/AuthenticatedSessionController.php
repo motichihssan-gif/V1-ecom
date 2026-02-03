@@ -29,11 +29,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = Auth::user();
-        if ($user->role === \App\Models\User::ADMIN_ROLE) {
-            return redirect()->route('produits.index');
+        $userRole = $user->role ?? 'USER';
+
+        // Redirect based on user role
+        if ($userRole === 'ADMIN') {
+            return redirect('/espaceadmin');
         }
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // USER or default - go to espaceclient
+        return redirect('/espaceclient');
     }
 
     /**

@@ -1,9 +1,22 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Rproductcontroler;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
+// Include authentication routes
+require __DIR__.'/auth.php';
+
+// Direct login/register routes
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login')->middleware('guest');
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register')->middleware('guest');
+Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');
 
 Route::get('/', function () {
     return view('Home');
@@ -43,13 +56,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-    // Product Management Routes
+// Product Management Routes - Admin only
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/produits/create', [Rproductcontroler::class, 'create'])->name('produits.create');
     Route::post('/produits', [Rproductcontroler::class, 'store'])->name('produits.store');
     Route::get('/produits/{id}/edit', [Rproductcontroler::class, 'edit'])->name('produits.edit');
     Route::put('/produits/{id}', [Rproductcontroler::class, 'update'])->name('produits.update');
     Route::delete('/produits/{id}', [Rproductcontroler::class, 'destroy'])->name('produits.destroy');
+    Route::get('/espaceadmin', [Rproductcontroler::class, 'espaceadmin'])->name('espaceadmin');
+});
+
+// User routes - USER role only
+Route::middleware(['auth', 'useruser'])->group(function () {
+    Route::get('/espaceclient', [Rproductcontroler::class, 'espaceclient'])->name('espaceclient');
 });
 
 

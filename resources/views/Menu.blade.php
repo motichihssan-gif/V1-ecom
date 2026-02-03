@@ -128,11 +128,13 @@
         @endguest
 
         @auth
-            @if(Auth::user()->role === \App\Models\User::USER_ROLE)
-                <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-user"></i> <span>Espace Client</span></a>
-            @endif
+            @php
+                $userRole = Auth::user()->role ?? 'USER';
+            @endphp
 
-            @if(Auth::user()->role === \App\Models\User::ADMIN_ROLE)
+            @if($userRole === 'USER')
+                <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-user"></i> <span>Espace Client</span></a>
+            @elseif($userRole === 'ADMIN')
                 <a href="{{ route('produits.create') }}" class="nav-link"><i class="fas fa-plus-circle"></i> <span>Ajouter un produit</span></a>
                 <a href="{{ route('produits.index') }}" class="nav-link"><i class="fas fa-edit"></i> <span>Mise à jour des produits</span></a>
             @endif

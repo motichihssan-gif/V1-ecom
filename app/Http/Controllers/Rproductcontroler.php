@@ -205,4 +205,31 @@ class Rproductcontroler extends Controller
             return back()->withErrors('Erreur: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Espace client - Afficher les produits en solde
+     */
+    public function espaceclient()
+    {
+        // Récupérer les produits avec solde > 0
+        $produits_en_solde = Product::where('solde', '>', 0)->paginate(10);
+        
+        return view('espaceclient', [
+            'produits_en_solde' => $produits_en_solde,
+            'user' => auth()->user()
+        ]);
+    }
+
+    /**
+     * Espace admin - Gestion des produits
+     */
+    public function espaceadmin()
+    {
+        // Récupérer tous les produits pour l'admin
+        $produits = Product::paginate(15);
+        
+        return view('espaceadmin', [
+            'produits' => $produits
+        ]);
+    }
 }
